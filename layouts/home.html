@@ -1,1 +1,24 @@
-{{ define "main" }}<section class="hero"><div class="shell hero-grid"><div><p class="kicker">HELLO, I’M {{ upper site.Params.author }}</p><h1>생각을 코드로,<br><em>배움을 기록으로.</em></h1><p class="hero-copy">{{ site.Params.description }}<br>오늘의 시행착오가 내일의 지식이 되도록 씁니다.</p><a class="button" href="{{ "posts/" | relURL }}">글 둘러보기 <span>→</span></a></div><div class="hero-art" aria-hidden="true"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><div class="code-card"><b>&lt;note&gt;</b><br><span>learn();</span><br><span>build();</span><br><span>share();</span><br><b>&lt;/note&gt;</b></div></div></div></section><section class="latest shell"><div class="section-heading"><div><p class="kicker">RECENT NOTES</p><h2>최근 글</h2></div><a href="{{ "posts/" | relURL }}">모든 글 보기 →</a></div><div class="post-grid">{{ range first 4 (where site.RegularPages "Section" "posts") }}{{ partial "post-card.html" . }}{{ end }}</div></section>{{ end }}
+{{ define "main" }}
+<section class="hero">
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="shell hero-grid">
+    <div class="hero-copy-wrap">
+      <div class="availability"><span></span> 새로운 것을 배우는 중</div>
+      <p class="kicker">DEVELOPER · BUILDER · NOTE TAKER</p>
+      <h1>생각을 코드로,<br><em>배움을 기록으로.</em></h1>
+      <p class="hero-copy">복잡한 문제를 하나씩 풀고, 그 과정에서 얻은 인사이트를 기록합니다. 오늘의 시행착오가 누군가의 지름길이 되기를 바랍니다.</p>
+      <div class="hero-actions"><a class="button" href="{{ "posts/" | relURL }}">글 둘러보기 <span>→</span></a><a class="text-button" href="https://github.com/{{ site.Params.github }}" target="_blank" rel="noopener">GitHub 방문 ↗</a></div>
+      <div class="hero-meta"><div><strong>{{ len (where site.RegularPages "Section" "posts") }}</strong><span>기록한 글</span></div><div><strong>{{ len site.Taxonomies.tags }}</strong><span>다루는 주제</span></div><div><strong>∞</strong><span>배울 것들</span></div></div>
+    </div>
+    <div class="profile-scene">
+      <div class="scene-grid" aria-hidden="true"></div><span class="float-label label-one">clean code</span><span class="float-label label-two">keep learning</span>
+      <div class="profile-card"><div class="profile-top"><span>PROFILE / 001</span><span class="status-dot"></span></div><img src="{{ site.Params.avatar | relURL }}" alt="{{ site.Params.author }} 프로필"><div class="profile-info"><div><p>안녕하세요,</p><h2>{{ site.Params.author }}입니다.</h2></div><span class="profile-arrow">↗</span></div><p class="profile-note">작은 호기심을 작동하는 코드로 만드는 개발자</p></div>
+      <div class="code-window" aria-hidden="true"><div><i></i><i></i><i></i><span>notes.ts</span></div><code><b>const</b> today = {<br>&nbsp;&nbsp;learn: <em>true</em>,<br>&nbsp;&nbsp;share: <em>true</em><br>};</code></div>
+    </div>
+  </div>
+</section>
+<div class="ticker" aria-label="주요 관심 분야"><div><span>WEB DEVELOPMENT</span><i>✦</i><span>CLEAN CODE</span><i>✦</i><span>PROBLEM SOLVING</span><i>✦</i><span>CONTINUOUS LEARNING</span><i>✦</i><span>WEB DEVELOPMENT</span><i>✦</i><span>CLEAN CODE</span></div></div>
+<section class="latest shell"><div class="section-heading"><div><p class="kicker">RECENT NOTES</p><h2>새로 쓴 기록</h2><p>최근에 배우고 고민한 것들을 정리했습니다.</p></div><a href="{{ "posts/" | relURL }}">모든 글 보기 <span>→</span></a></div><div class="post-grid">{{ range first 4 (where site.RegularPages "Section" "posts") }}{{ partial "post-card.html" . }}{{ end }}</div></section>
+<section class="topics-section"><div class="shell topics-grid"><div class="topics-intro"><p class="kicker">EXPLORE BY TOPIC</p><h2>관심사를 따라<br>둘러보세요.</h2><p>하나의 답보다 답을 찾아가는 과정에 집중합니다.</p></div><div class="topic-list">{{ range first 5 site.Taxonomies.tags.ByCount }}<a href="{{ .Page.RelPermalink }}"><span class="topic-number">0{{ .Count }}</span><strong># {{ .Page.LinkTitle }}</strong><small>{{ .Count }}개의 글</small><b>↗</b></a>{{ end }}<a class="all-topics" href="{{ "tags/" | relURL }}"><span class="topic-number">··</span><strong>모든 주제</strong><small>태그 모아보기</small><b>→</b></a></div></div></section>
+<section class="home-cta shell"><div><span class="cta-symbol">✳</span><p class="kicker">LET'S KEEP IN TOUCH</p><h2>함께 배우고 성장해요.</h2><p>새로운 프로젝트와 기록은 GitHub에서 가장 먼저 확인할 수 있습니다.</p></div><a class="button button-light" href="https://github.com/{{ site.Params.github }}" target="_blank" rel="noopener">GitHub에서 만나기 <span>↗</span></a></section>
+{{ end }}
