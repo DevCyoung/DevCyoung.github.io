@@ -1,0 +1,1 @@
+{{ define "main" }}<header class="page-hero shell"><p class="kicker">EXPLORE</p><h1>{{ .Title }}</h1><p>관심 있는 주제로 글을 찾아보세요.</p></header><section class="shell terms-cloud">{{ range .Data.Terms.ByCount }}<a href="{{ .Page.RelPermalink }}"><span>#{{ .Page.LinkTitle }}</span><small>{{ .Count }}개의 글</small></a>{{ end }}</section>{{ end }}

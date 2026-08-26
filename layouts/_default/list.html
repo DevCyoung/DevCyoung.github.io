@@ -1,0 +1,1 @@
+{{ define "main" }}<header class="page-hero shell"><p class="kicker">ARCHIVE</p><h1>{{ .Title }}</h1>{{ with .Description }}<p>{{ . }}</p>{{ end }}</header><section class="shell archive"><div class="post-grid">{{ range .Paginator.Pages }}{{ partial "post-card.html" . }}{{ end }}</div>{{ template "_internal/pagination.html" . }}</section>{{ end }}

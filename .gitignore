@@ -1,13 +1,9 @@
-# project
-_site
-.sass-cache
-.vagrant
+# Hugo build output
+/public/
+/resources/_gen/
+.hugo_build.lock
 
-# general
+# General
 .DS_Store
 Thumbs.db
 ehthumbs.db
-
-Gemfile.lock
-
-beautiful-jekyll-theme-*.gem
